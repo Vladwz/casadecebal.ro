@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa Decebal - Cazare Eforie Nord</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Casa Decebal/new version/Assets/casa\ decebal\ hero\ image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .gallery-item {
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .amenity-icon {
+            font-size: 2rem;
+            color: #1e40af;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .booking-form {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .parallax {
+                background-attachment: scroll;
+            }
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .testimonial-quote {
+            position: relative;
+        }
+        
+        .testimonial-quote::before {
+            content: "\201C";
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-size: 4rem;
+            color: rgba(30, 64, 175, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-quote::after {
+            content: "\201D";
+            position: absolute;
+            bottom: -40px;
+            right: -10px;
+            font-size: 4rem;
+            color: rgba(30, 64, 175, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-avatar {
+            border: 3px solid rgba(30, 64, 175, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover .testimonial-avatar {
+            border-color: rgba(30, 64, 175, 0.5);
+            transform: scale(1.05);
+        }
+        
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-indicator.active {
+            width: 32px;
+            background-color: #1e40af;
+        }
+        
+        .carousel-control {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-control:hover {
+            background: rgba(30, 64, 175, 0.9);
+            color: white;
+        }
+
+        #testimonialIndicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+#testimonialIndicators button {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#testimonialIndicators button.active {
+    background: #333;
+}
+
+.room-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: white;
+}
+
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .amenity-icon {
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: #3b82f6;
+        }
+
+        .price-tag-ribbon {
+            position: absolute;
+            top: 1rem;
+            right: -2.5rem; /* Less negative to bring it in */
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.5rem 2.5rem; /* Tighter padding */
+            transform: rotate(45deg);
+            font-weight: bold;
+            font-size: 0.875rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            text-align: center;
+            white-space: nowrap; /* Prevents wrapping */
+        }       
+
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -8px;
+            left: 25%;
+            background-color: #3b82f6;
+        }
+        
+
+    </style>
+</head>
+<body class="text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center">
+              <img src="/Casa Decebal/new version/Assets/Casa Decebal Eforie Nord logo negru final.png"
+                   alt="Casa Decebal Logo"
+                   class="h-12 w-auto sm:h-16 md:h-20">
+            </a>
+          
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+              <a href="#acasa" class="nav-link text-blue-800 font-medium hover:text-blue-600 transition">Acasă</a>
+              <a href="#despre" class="nav-link text-gray-700 hover:text-blue-800 transition">Despre Noi</a>
+              <a href="#rooms" class="nav-link text-gray-700 hover:text-blue-800 transition">Camere</a>
+              <a href="#galerie" class="nav-link text-gray-700 hover:text-blue-800 transition">Galerie</a>
+              <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-800 transition">Recenzii</a>
+              <a href="#contact-form" class="nav-link text-gray-700 hover:text-blue-800 transition">Contact</a>
+            </div>
+          
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button"
+                    class="md:hidden text-gray-700 focus:outline-none">
+              <i class="fas fa-bars text-2xl"></i>
+            </button>
+          </div>
+          
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full px-4 pb-4">
+            <a href="#acasa" class="block py-2 text-blue-800 font-medium">Acasă</a>
+            <a href="#despre" class="block py-2 text-gray-700">Despre Noi</a>
+            <a href="#rooms" class="block py-2 text-gray-700">Camere</a>
+            <a href="#galerie" class="block py-2 text-gray-700">Galerie</a>
+            <a href="#testimonials" class="block py-2 text-gray-700">Recenzii</a>
+            <a href="#contact-form" class="block py-2 text-gray-700">Contact</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="acasa" class="hero min-h-screen flex items-center justify-center text-white pt-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Casa Decebal</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Confort și relaxare la malul mării – locul ideal pentru vacanța ta.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact-form" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">Rezervați acum</a>
+                <a href="#galerie" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">Explorează</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="despre" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Despre Noi</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-8">
+                <div class="lg:w-1/2">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal despre noi cover.jpg" alt="Casa Decebal" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Un colț de rai în Eforie Nord</h3>
+                    <p class="text-gray-600 mb-4">La doar 16 minute de mers pe jos de Plaja Eforie Nord, Casa Decebal vă oferă un refugiu perfect pentru o vacanță relaxantă. </p>
+                    <p class="text-gray-600 mb-6">Camerele confortabile, dotările moderne și locația excelentă, cu grădină și terasă, vă garantează o ședere plăcută într-un ambient liniștit, ideal pentru a vă destinde și a vă bucura de vremea bună.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-umbrella-beach amenity-icon mr-3"></i>
+                            <span class="text-gray-700">La 1.4 km de plajă</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-wifi amenity-icon mr-3"></i>
+                            <span class="text-gray-700">Wi-Fi gratuit</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-parking amenity-icon mr-3"></i>
+                            <span class="text-gray-700">Parcare privată</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-concierge-bell amenity-icon mr-3"></i>
+                            <span class="text-gray-700">Recepție deschisă 24/7</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#rooms" class="inline-block bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded-lg transition duration-300">Vezi camerele</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Rooms Section -->
+<section id="rooms" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+        <h2 class="section-title text-3xl sm:text-4xl font-bold text-gray-800">Camerele Noastre</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Standard Double Room -->
+        <div class="room-card bg-white rounded-xl overflow-hidden relative">
+            <div class="price-tag-ribbon">
+                190 RON
+            </div>
+            <div class="h-64 overflow-hidden">
+                <img src="/Casa Decebal/new version/Assets/camera dubla casa decebal.jpg" 
+                     alt="Standard Double Room" 
+                     class="w-full h-full object-cover transition duration-500 hover:scale-105">
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Cameră dublă standard</h3>
+                <p class="text-gray-600 mb-4">
+                    Camera noastră dublă spațioasă vă oferă tot confortul de care aveți nevoie pentru un sejur relaxant, cu toate facilitățile incluse.
+                </p>
+                
+                <div class="mb-6">
+                    <div class="flex items-center mb-2">
+                        <div class="amenity-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <span class="text-gray-700">2 adulți</span>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <div class="amenity-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <span class="text-gray-700">1 pat dublu</span>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <div class="amenity-icon">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+                        <span class="text-gray-700">20 m²</span>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-200 pt-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-lg font-semibold text-gray-800">190 RON / noapte</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Room Features (as cards) -->
+        <div class="bg-white rounded-xl p-6 room-card">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Facilități</h3>
+            <div class="space-y-4">
+                <div class="flex items-start">
+                    <div class="bg-blue-100 p-2 rounded-full mr-4">
+                        <i class="fas fa-door-open text-blue-500"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Balcon</h4>
+                        <p class="text-gray-600">Balcon privat pentru a vă bucura de aer proaspat</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-blue-100 p-2 rounded-full mr-4">
+                        <i class="fas fa-snowflake text-blue-500"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Aer Condiționat</h4>
+                        <p class="text-gray-600">Control individual al climatizării pentru confortul dumneavoastră</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-blue-100 p-2 rounded-full mr-4">
+                        <i class="fas fa-tv text-blue-500"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">TV cu Ecran Plat</h4>
+                        <p class="text-gray-600">Acces la canale prin cablu, pentru momente de relaxare după o zi la plajă</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-blue-100 p-2 rounded-full mr-4">
+                        <i class="fas fa-shower text-blue-500"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Baie Privată</h4>
+                        <p class="text-gray-600">Baie modernă cu duș și articole de toaletă gratuite</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-blue-100 p-2 rounded-full mr-4">
+                        <i class="fas fa-baby text-blue-500"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">Pătuț Gratuit</h4>
+                        <p class="text-gray-600">Pătuț disponibil la cerere pentru cel mic (0-2 ani)</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Extra Services -->
+        <div class="bg-white rounded-xl p-6 room-card">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Alte Beneficii</h3>
+            <div class="space-y-4">
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 p-2 rounded-full mr-4">
+                            <i class="fas fa-bed text-blue-500"></i>
+                        </div>
+                        <span class="font-medium">Pat Extra</span>
+                    </div>
+                    <span class="font-semibold">40 RON/ noapte</span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 p-2 rounded-full mr-4">
+                            <i class="fas fa-parking text-blue-500"></i>
+                        </div>
+                        <span class="font-medium">Loc de Parcare</span>
+                    </div>
+                    <span class="font-semibold">Gratuit</span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 p-2 rounded-full mr-4">
+                            <i class="fas fa-utensils text-blue-500"></i>
+                        </div>
+                        <span class="font-medium">Mic Dejun</span>
+                    </div>
+                    <span class="font-semibold">Disponibil la cerere</span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 p-2 rounded-full mr-4">
+                            <i class="fas fa-broom text-blue-500"></i>
+                        </div>
+                        <span class="font-medium">Menaj Zilnic</span>
+                    </div>
+                    <span class="font-semibold">Inclus</span>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-blue-50 p-4 rounded-lg border border-blue-100">
+                <h4 class="font-bold text-blue-800 mb-2">Mențiuni</h4>
+                <p class="text-blue-700">
+                    Fumatul este interzis în cameră. Check-in-ul se face începând cu ora 14:00, iar check-out-ul până la ora 12:00. Check-in-ul anticipat și check-out-ul târziu pot fi disponibile la cerere.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <!-- Gallery Section -->
+    <section id="galerie" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Galerie Foto</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Răsfățați-vă privirea cu imagini din Casa Decebal și împrejurimi</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal exterior.jpg" alt="Casa Decebal" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal exterior 2.jpg" alt="casa decebal exterior" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal gratar.jpg" alt="gratar" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal curte.jpg" alt="curte" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal loc de joaca.jpg" alt="loc de joaca copii" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal bucatarie.jpg" alt="locker" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal bucatarie 2.jpg" alt="bucatarie" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal terasa 1.jpg" alt="terasa" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal terasa 2.jpg" alt="terasa" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal terasa 3.jpg" alt="terasa" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal terasa 4.jpg" alt="terasa" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal hol.jpg" alt="hol" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal hol etaj.jpg" alt="hol etaj" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal camera 1.jpg" alt="camera 1" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal camera 1 poza 2.jpg" alt="camera 1" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal camera 1 baie.jpg" alt="baie" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal camera 3.jpg" alt="camera 2" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal camera 4.jpg" alt="camera 3" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal baie 2.jpg" alt="baie" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="/Casa Decebal/new version/Assets/casa decebal pat.jpg" alt="pat" class="w-full h-48 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonial Section -->
+    <section id="testimonials" class="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ce spun oaspeții noștri</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto rounded-full mb-6"></div>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">Descoperiți experiențele autentice ale celor care au ales Casa Decebal pentru vacanța lor</p>
+            </div>
+            
+            <div class="relative max-w-7xl mx-auto">
+                
+                <!-- Carousel Controls -->
+            <div class="absolute inset-y-1/2 left-[-70px] transform -translate-y-1/2 flex items-center space-x-3 z-10">
+                <button class="carousel-control w-12 h-12 rounded-full flex items-center justify-center text-blue-600 shadow-md" id="prevTestimonial">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+
+            <div class="absolute inset-y-1/2 right-[-70px] transform -translate-y-1/2 flex items-center space-x-3 z-10">
+                <button class="carousel-control w-12 h-12 rounded-full flex items-center justify-center text-blue-600 shadow-md" id="nextTestimonial">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+                
+                <!-- Carousel Container -->
+                <div class="overflow-hidden">
+                    <div class="flex transition-transform duration-500 ease-in-out" id="testimonialCarousel">
+                        <!-- Testimonial 1 -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8 flex-shrink-0">
+                            <div class="testimonial-card rounded-xl p-8 h-full">
+                                <div class="flex mb-4 text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="testimonial-quote relative mb-8">
+                                    <p class="text-gray-600 italic text-lg">Curte foarte frumoasa, gratar, loc de joaca pentru copii, umbrele, totul curat, hol impecabil curat parfumat, camera curata dotata cu mini frigider, totul functional, baie impecabila, terasa pentru camera cu scrumiera, masa, scaune uscator de rufe, sus terasa pentru toata lumea cu bucatarie dotata cu absolut orice este necesar.</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="testimonial-avatar w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center overflow-hidden mr-4">
+                                        <i class="fas fa-user text-blue-600 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Stefania</h4>
+                                        <p class="text-gray-500">August 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 2 -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8 flex-shrink-0">
+                            <div class="testimonial-card rounded-xl p-8 h-full">
+                                <div class="flex mb-4 text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="testimonial-quote relative mb-8">
+                                    <p class="text-gray-600 italic text-lg">Am fost privilegiați și, ulterior, răsfățați de amabilitatea, receptivitatea și disponibilitatea personalului de la Casa Decebal, unde am fost de curând cazați, în Eforie Nord. Am beneficiat de confort, liniște, curățenie impecabilă și dotări pe care unii nu le avem nici acasă, pentru un sejur memorabil. Oferi și primești este f. probabil principiul ospitalității casei Decebal..Felicitări doamnă Ana-Maria, dvs. și întregii echipe! Recomandăm!</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="testimonial-avatar w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center overflow-hidden mr-4">
+                                        <i class="fas fa-user text-blue-600 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Eusebiu</h4>
+                                        <p class="text-gray-500">Mai 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 3 -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8 flex-shrink-0">
+                            <div class="testimonial-card rounded-xl p-8 h-full">
+                                <div class="flex mb-4 text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="testimonial-quote relative mb-8">
+                                    <p class="text-gray-600 italic text-lg">Mulțumim personalului! recomand cu drag locația, curățenie, liniște, locul unde te poți odihni, reîncărca cu energie! Per total o locație super!</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="testimonial-avatar w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center overflow-hidden mr-4">
+                                        <i class="fas fa-user text-blue-600 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Georgiana</h4>
+                                        <p class="text-gray-500">Mai 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 4 -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8 flex-shrink-0">
+                            <div class="testimonial-card rounded-xl p-8 h-full">
+                                <div class="flex mb-4 text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="testimonial-quote relative mb-8">
+                                    <p class="text-gray-600 italic text-lg">Curățenie impecabilă, cum rar întâlnești, miros frumos în toată casa, atenție la detalii.</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="testimonial-avatar w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center overflow-hidden mr-4">
+                                        <i class="fas fa-user text-blue-600 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Gabriela</h4>
+                                        <p class="text-gray-500">August 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 5 -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8 flex-shrink-0">
+                            <div class="testimonial-card rounded-xl p-8 h-full">
+                                <div class="flex mb-4 text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="testimonial-quote relative mb-8">
+                                    <p class="text-gray-600 italic text-lg">Gazda foarte de treaba si primitoare am ajuns la ora 1 noaptea si nu a avut nici un fel de problema .Locatia si camera foarte curate .Camera spatioasa cu patul numai bun pentru somn , aerul conditionat si a facut treaba chiar si draperiile ne-au ajutat mult sa dormim si ziua.</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="testimonial-avatar w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center overflow-hidden mr-4">
+                                        <i class="fas fa-user text-blue-600 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Daniel</h4>
+                                        <p class="text-gray-500">August 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 6 -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8 flex-shrink-0">
+                            <div class="testimonial-card rounded-xl p-8 h-full">
+                                <div class="flex mb-4 text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="testimonial-quote relative mb-8">
+                                    <p class="text-gray-600 italic text-lg">O gazda foarte primitoare, curățenie, foarte atenți la detalii. Terasa de sus foarte frumoasa, o sa revenim cu drag . Recomand cu toată încrederea.</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="testimonial-avatar w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center overflow-hidden mr-4">
+                                        <i class="fas fa-user text-blue-600 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Andrei</h4>
+                                        <p class="text-gray-500">Iulie 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+                <!-- Carousel Indicators -->
+                <div class="flex justify-center mt-8 space-x-2" id="testimonialIndicators">
+                    <button class="carousel-indicator rounded-full bg-gray-300" data-index="0"></button>
+                    <button class="carousel-indicator rounded-full bg-gray-300" data-index="1"></button>
+                    <button class="carousel-indicator rounded-full bg-gray-300" data-index="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="py-16 bg-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contactați-ne</h2>
+                <div class="w-24 h-1 bg-white mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto">Trimiteți-ne un mesaj pentru orice întrebări sau informații suplimentare</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-lg overflow-hidden contact-form">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8 bg-blue-700">
+                        <h3 class="text-2xl font-bold mb-4">Informații de contact</h3>
+                        <p class="mb-6">Suntem mereu bucuroși să vă răspundem la orice întrebare.</p>
+                        
+                        <div class="mb-4 flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold">Adresă</h4>
+                                <p>Strada Decebal, Nr. 15, Eforie Nord</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold">Telefon</h4>
+                                <p>+40 721 123 456</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p>contact@casadecebal.ro</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 p-8 text-gray-800">
+                        <form action="https://formspree.io/f/mwpokgla" method="POST">
+                            <div class="mb-4">
+                                <label for="contact-name" class="block text-gray-700 font-medium mb-2">Nume complet</label>
+                                <input type="text" id="contact-name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                        
+                            <div class="mb-4">
+                                <label for="contact-email" class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" id="contact-email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                        
+                            <div class="mb-4">
+                                <label for="contact-phone" class="block text-gray-700 font-medium mb-2">Telefon</label>
+                                <input type="tel" id="contact-phone" name="phone" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        
+                            <div class="mb-4">
+                                <label for="contact-subject" class="block text-gray-700 font-medium mb-2">Subiect</label>
+                                <input type="text" id="contact-subject" name="subject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                        
+                            <div class="mb-4">
+                                <label for="contact-message" class="block text-gray-700 font-medium mb-2">Mesaj</label>
+                                <textarea id="contact-message" name="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                            </div>
+                        
+                            <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                                Trimiteți mesajul
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact & Map Section -->
+    <section id="contact-form" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Cum ne găsiți</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Vă așteptăm cu drag la Casa Decebal pentru o vacanță de neuitat</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Informații de contact</h3>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-700 mb-2">Adresă</h4>
+                            <p class="text-gray-600">Aleea Narcisei, Nr. 5, 905350 Eforie Nord, România</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-700 mb-2">Program</h4>
+                            <p class="text-gray-600">Check-in: 14:00 - 00:00</p>
+                            <p class="text-gray-600">Check-out: 06:00 - 10:00</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-700 mb-2">Telefon/WhatsApp</h4>
+                            <p class="text-gray-600">0737 201 588</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-gray-700 mb-2">Email</h4>
+                            <p class="text-gray-600">vladwz14@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="h-96 w-full rounded-lg overflow-hidden shadow-md">
+                        <!-- Google Maps iframe -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2866.6379525153784!2d28.622192476558862!3d44.070184171085394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40bae1c174b9d18d%3A0x28981368e8abccc7!2sCasa%20Decebal%20Eforie%20nord!5e0!3m2!1sro!2sro!4v1746034568793!5m2!1sro!2sro" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-white">CASA DECEBAL</a>
+                    <p class="text-gray-400 mt-1">Cazare de vis în Eforie Nord</p>
+                </div>
+                
+                <div class="flex space-x-6 mb-4 md:mb-0 items-center">
+                    <a href="https://www.facebook.com/profile.php?id=100068744467787" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                
+                <div class="text-gray-400 text-sm">
+                    &copy; 2025 Casa Decebal. Toate drepturile rezervate.
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+   <!-- Back to Top Button -->
+<button id="back-to-top" class="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 bg-blue-700 text-white w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shadow-lg transition-opacity duration-300 opacity-0 invisible hover:bg-blue-800 z-50">
+    <i class="fas fa-arrow-up text-lg sm:text-xl"></i>
+</button>
+
+    
+    <script>
+// Testimonial Carousel
+document.addEventListener('DOMContentLoaded', function () {
+    const carousel = document.getElementById('testimonialCarousel');
+    const prevBtn = document.getElementById('prevTestimonial');
+    const nextBtn = document.getElementById('nextTestimonial');
+    const indicatorsContainer = document.getElementById('testimonialIndicators');
+    const cardSelector = '#testimonialCarousel > div';
+    const cards = document.querySelectorAll(cardSelector);
+
+    let currentIndex = 0;
+    let cardsPerView = getCardsPerView();
+    let autoScrollInterval;
+    let startX = 0;
+
+    function getCardsPerView() {
+        return window.innerWidth < 768 ? 1 : (window.innerWidth < 1024 ? 2 : 3);
+    }
+
+    function getMaxIndex() {
+        return Math.ceil(cards.length / cardsPerView) - 1;
+    }
+
+    function getCardWidthWithGap() {
+        const card = document.querySelector(cardSelector);
+        if (!card) return 0;
+        const style = window.getComputedStyle(card);
+        const width = card.offsetWidth;
+        const marginRight = parseFloat(style.marginRight || '0');
+        return width + marginRight;
+    }
+
+    function generateIndicators() {
+        indicatorsContainer.innerHTML = ''; // Clear previous
+        const maxIndex = getMaxIndex();
+        for (let i = 0; i <= maxIndex; i++) {
+            const btn = document.createElement('button');
+            btn.setAttribute('data-index', i);
+            btn.classList.add('indicator-btn');
+            if (i === 0) btn.classList.add('active');
+            indicatorsContainer.appendChild(btn);
+        }
+
+        document.querySelectorAll('#testimonialIndicators button').forEach(button => {
+            button.addEventListener('click', () => {
+                currentIndex = parseInt(button.getAttribute('data-index'));
+                updateCarousel();
+            });
+        });
+    }
+
+    function updateCarousel() {
+        const cardFullWidth = getCardWidthWithGap();
+        const offset = -currentIndex * cardsPerView * cardFullWidth;
+        carousel.style.transform = `translateX(${offset}px)`;
+
+        // Update indicator active state
+        const indicators = document.querySelectorAll('#testimonialIndicators button');
+        indicators.forEach((btn, index) => {
+            btn.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function goToNext() {
+        const maxIndex = getMaxIndex();
+        currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
+        updateCarousel();
+    }
+
+    function goToPrev() {
+        const maxIndex = getMaxIndex();
+        currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
+        updateCarousel();
+    }
+
+    nextBtn.addEventListener('click', goToNext);
+    prevBtn.addEventListener('click', goToPrev);
+
+    window.addEventListener('resize', () => {
+        cardsPerView = getCardsPerView();
+        currentIndex = 0;
+        generateIndicators();
+        updateCarousel();
+    });
+
+    // Auto-scroll
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(goToNext, 5000);
+    }
+
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
+
+    carousel.addEventListener('mouseenter', stopAutoScroll);
+    carousel.addEventListener('mouseleave', startAutoScroll);
+
+    // Swipe support
+    carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        const deltaX = endX - startX;
+        if (deltaX > 50) {
+            goToPrev();
+        } else if (deltaX < -50) {
+            goToNext();
+        }
+    });
+
+    // Init
+    generateIndicators();
+    updateCarousel();
+    startAutoScroll();
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function activateLink() {
+        let current = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+            if (pageYOffset >= sectionTop) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("border-b-2", "border-blue-800", "text-blue-800", "font-semibold");
+            link.classList.add("text-gray-700");
+
+            if (link.getAttribute("href") === `#${current}`) {
+                link.classList.add("border-b-2", "border-blue-800", "text-blue-800", "font-semibold");
+                link.classList.remove("text-gray-700");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", activateLink);
+});
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const phone = document.getElementById('contact-phone').value;
+            const subject = document.getElementById('contact-subject').value;
+            const message = document.getElementById('contact-message').value;
+            
+            // Here you would typically send this data to a server
+            // For this example, we'll just show an alert
+            alert(`Mulțumim pentru mesaj, ${name}!\nAm primit solicitarea dumneavoastră cu subiectul: "${subject}".\nVă vom răspunde în cel mai scurt timp la adresa de email: ${email}`);
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Scroll to thank you message (optional)
+            window.scrollTo({
+                top: document.getElementById('contact-form').offsetTop - 80,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.querySelector('nav');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-3');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2');
+            }
+        });
+
+
+        // Testimonial Carousel
+        document.addEventListener('DOMContentLoaded', function () {
+    const carousel = document.getElementById('testimonialCarousel');
+    const prevBtn = document.getElementById('prevTestimonial');
+    const nextBtn = document.getElementById('nextTestimonial');
+    const indicatorsContainer = document.getElementById('testimonialIndicators');
+    const cardSelector = '#testimonialCarousel > div';
+    const cards = document.querySelectorAll(cardSelector);
+
+    let currentIndex = 0;
+    let cardsPerView = getCardsPerView();
+    let autoScrollInterval;
+    let startX = 0;
+
+    function getCardsPerView() {
+        return window.innerWidth < 768 ? 1 : (window.innerWidth < 1024 ? 2 : 3);
+    }
+
+    function getMaxIndex() {
+        return Math.ceil(cards.length / cardsPerView) - 1;
+    }
+
+    function getCardWidthWithGap() {
+        const card = document.querySelector(cardSelector);
+        if (!card) return 0;
+        const style = window.getComputedStyle(card);
+        const width = card.offsetWidth;
+        const marginRight = parseFloat(style.marginRight || '0');
+        return width + marginRight;
+    }
+
+    function generateIndicators() {
+        indicatorsContainer.innerHTML = ''; // Clear previous
+        const maxIndex = getMaxIndex();
+        for (let i = 0; i <= maxIndex; i++) {
+            const btn = document.createElement('button');
+            btn.setAttribute('data-index', i);
+            btn.classList.add('indicator-btn');
+            if (i === 0) btn.classList.add('active');
+            indicatorsContainer.appendChild(btn);
+        }
+
+        document.querySelectorAll('#testimonialIndicators button').forEach(button => {
+            button.addEventListener('click', () => {
+                currentIndex = parseInt(button.getAttribute('data-index'));
+                updateCarousel();
+            });
+        });
+    }
+
+    function updateCarousel() {
+        const cardFullWidth = getCardWidthWithGap();
+        const offset = -currentIndex * cardsPerView * cardFullWidth;
+        carousel.style.transform = `translateX(${offset}px)`;
+
+        // Update indicator active state
+        const indicators = document.querySelectorAll('#testimonialIndicators button');
+        indicators.forEach((btn, index) => {
+            btn.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function goToNext() {
+        const maxIndex = getMaxIndex();
+        currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
+        updateCarousel();
+    }
+
+    function goToPrev() {
+        const maxIndex = getMaxIndex();
+        currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
+        updateCarousel();
+    }
+
+    nextBtn.addEventListener('click', goToNext);
+    prevBtn.addEventListener('click', goToPrev);
+
+    window.addEventListener('resize', () => {
+        cardsPerView = getCardsPerView();
+        currentIndex = 0;
+        generateIndicators();
+        updateCarousel();
+    });
+
+    // Auto-scroll
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(goToNext, 5000);
+    }
+
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
+
+    carousel.addEventListener('mouseenter', stopAutoScroll);
+    carousel.addEventListener('mouseleave', startAutoScroll);
+
+    // Swipe support
+    carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        const deltaX = endX - startX;
+        if (deltaX > 50) {
+            goToPrev();
+        } else if (deltaX < -50) {
+            goToNext();
+        }
+    });
+
+    // Init
+    generateIndicators();
+    updateCarousel();
+    startAutoScroll();
+});
+
+
+    </script>
+</body>
+</html>
